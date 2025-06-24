@@ -1,6 +1,7 @@
 package org.ruoyi.chat.service.chat.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -83,14 +84,23 @@ public class SseServiceImpl implements ISseService {
             if(LoginHelper.isLogin()){
                 // 保存消息记录 并扣除费用
                 chatCostService.deductToken(chatRequest);
+                ObjectMapper mapper = new ObjectMapper();
+                String data = mapper.writeValueAsString(chatRequest);
+                log.info("首次记录会话消息：{}",data);
+
                 chatRequest.setUserId(chatCostService.getUserId());
                 if(chatRequest.getSessionId()==null){
+                    log.info("未识别到sessionId");
+
                     ChatSessionBo chatSessionBo = new ChatSessionBo();
                     chatSessionBo.setUserId(chatCostService.getUserId());
                     chatSessionBo.setSessionTitle(getFirst10Characters(chatRequest.getPrompt()));
                     chatSessionBo.setSessionContent(chatRequest.getPrompt());
                     chatSessionService.insertByBo(chatSessionBo);
                     chatRequest.setSessionId(chatSessionBo.getId());
+
+                    String data1 = mapper.writeValueAsString(chatRequest);
+                    log.info("再次记录会话消息：{}",data1);
                 }
             }
             // 根据模型分类调用不同的处理逻辑

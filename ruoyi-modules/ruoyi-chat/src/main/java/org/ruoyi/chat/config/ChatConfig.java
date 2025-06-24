@@ -3,6 +3,7 @@ package org.ruoyi.chat.config;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.ruoyi.common.chat.openai.OpenAiStreamClient;
 import org.ruoyi.common.chat.openai.function.KeyRandomStrategy;

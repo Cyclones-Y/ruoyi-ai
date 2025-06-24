@@ -48,6 +48,7 @@ public class ChatCostServiceImpl implements IChatCostService {
     @Override
     public void deductToken(ChatRequest chatRequest) {
         if(chatRequest.getUserId()==null || chatRequest.getSessionId()==null){
+            log.info("未获取到userid或sessionID");
             return;
         }
 
