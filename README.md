@@ -114,7 +114,7 @@
 - 演示账号: demo 密码：demo123
 - 管理端：https://admin.pandarobot.chat
 - 演示账号: admin 密码：admin123
-- 商业版：体验商业版请联系下方小助手获取演示地址（预计6月份上线）。
+
 
 ### 源码地址
 [1]github
@@ -148,6 +148,36 @@
  -  PPT 制作：根据文本输入自动生成结构化幻灯片，支持自定义模板(需要使用三方平台 如：文多多)。
 
 ### 项目演示
+
+#### 任务规划
+
+### 任务规划演示
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+
+<!-- 任务1: 自动创建项目 -->
+<div style="text-align: center; padding: 15px; border-radius: 8px; background: #f8f9fa; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <h3 style="margin-top: 0; margin-bottom: 15px;">自动创建项目</h3>
+
+  <div style="margin-top: 10px;">
+    <a href="https://www.bilibili.com/video/BV1CgKuzFEt6" target="_blank" style="display: inline-block; background: #3498db; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-weight: 500;">
+      观看视频
+    </a>
+  </div>
+</div>
+
+<!-- 任务2: 生成旅游攻略 -->
+<div style="text-align: center; padding: 15px; border-radius: 8px; background: #f8f9fa; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <h3 style="margin-top: 0; margin-bottom: 15px;">生成旅游攻略</h3>
+  <div style="margin-top: 10px;">
+    <a href="https://www.bilibili.com/video/BV1kuKuzfERC" target="_blank" style="display: inline-block; background: #3498db; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-weight: 500;">
+      观看视频
+    </a>
+  </div>
+</div>
+
+</div>
+
 
 #### mcp支持
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
@@ -284,13 +314,6 @@
 4. 推送到分支 (`git push origin feature/dev`)
 5. 打开拉取请求
 6. pr请提交到GitHub上，会定时同步到gitee
-
-#### 项目文档
-1. 项目文档基于vitepress构建
-2. 按照[如何参与开源项目](#如何参与开源项目)拉取https://github.com/ageerle/ruoyi-doc
-3. 安装依赖：npm install
-4. 启动项目：npm run docs:dev
-5. 主页路径：docs/guide/introduction/index.md
 
 ### 鸣谢
 - [chatgpt-java](https://github.com/Grt1228/chatgpt-java)
