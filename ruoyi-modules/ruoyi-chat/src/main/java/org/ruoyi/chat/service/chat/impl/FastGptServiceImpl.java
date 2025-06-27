@@ -29,11 +29,12 @@ public class FastGptServiceImpl implements IChatService {
         ChatModelVo chatModelVo = chatModelService.selectModelByName(chatRequest.getModel());
         OpenAiStreamClient openAiStreamClient = ChatConfig.createOpenAiStreamClient(chatModelVo.getApiHost(), chatModelVo.getApiKey());
         List<Message> messages = chatRequest.getMessages();
-        FastGPTSSEEventSourceListener listener = new FastGPTSSEEventSourceListener(emitter, chatRequest.getUserId(), chatRequest.getSessionId());
+        FastGPTSSEEventSourceListener listener = new FastGPTSSEEventSourceListener(emitter);
         FastGPTChatCompletion completion = FastGPTChatCompletion
                 .builder()
                 .messages(messages)
-                .model(chatRequest.getModel())
+                // 开启后sse会返回event值
+                .detail(true)
                 .stream(true)
                 .build();
         openAiStreamClient.streamChatCompletion(completion, listener);

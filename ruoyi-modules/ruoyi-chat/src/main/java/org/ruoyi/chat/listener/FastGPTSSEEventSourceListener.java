@@ -22,17 +22,9 @@ public class FastGPTSSEEventSourceListener extends EventSourceListener {
 
     private SseEmitter emitter;
 
-    private Long userId;
-
-    private Long sessionId;
-
-    private StringBuilder stringBuffer = new StringBuilder();
-
     @Autowired(required = false)
-    public FastGPTSSEEventSourceListener(SseEmitter emitter,Long userId,Long sessionId) {
+    public FastGPTSSEEventSourceListener(SseEmitter emitter) {
         this.emitter = emitter;
-        this.userId = userId;
-        this.sessionId = sessionId;
     }
 
     @Override
@@ -41,17 +33,16 @@ public class FastGPTSSEEventSourceListener extends EventSourceListener {
     }
 
     @Override
-    public void onEvent(@NotNull EventSource eventSource, String id, String type, String data) {
+    public void onEvent(@NotNull EventSource eventSource, String id, String type, @NotNull String data) {
         try {
-            if ("[DONE]".equals(data)){
+            log.debug("事件类型为: {}", type);
+            log.debug("事件数据为: {}", data);
+            if ("flowResponses".equals(type)){
+                emitter.send(data);
                 emitter.complete();
-                return;
+            } else {
+                emitter.send(data);
             }
-            log.info("事件类型为: {}", type);
-            log.info("事件ID为: {}", id);
-            log.info("事件数据为: {}", data);
-            emitter.send(data);
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

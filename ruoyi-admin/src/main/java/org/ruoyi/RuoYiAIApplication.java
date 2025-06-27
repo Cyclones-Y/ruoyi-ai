@@ -23,3 +23,4 @@ public class RuoYiAIApplication {
         System.out.println("(♥◠‿◠)ﾉﾞ  RuoYiAI启动成功   ლ(´ڡ`ლ)ﾞ");
     }
 }
+
